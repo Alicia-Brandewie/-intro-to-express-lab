@@ -36,21 +36,46 @@ app.get('/greetings/:username', (req, res) => {
 
 app.get('/collectibles/:index', (req, res) => {
     const index = req.params.index;
-    res.send(`testing collectibles ${index}.`);
-   
-//   if (index != collectibles) {
-//     res.send(`This item is not yet in stock. Check back soon!`);
-//     } else {
-// res.send(`So, you want ${name}? For $${price}, it can be yours!`)
-//     }
+    const i = parseInt(index);
+    if (!collectibles[i]) { // "if there is nothing there, return something at this index"
+    res.send(`This item is not yet in stock. Check back soon!`); 
+    } else {
+        const name = req.query.name;
+        const pice = req.query.price;
+        res.send(`So, you want ${collectibles[i].name}? For $${collectibles[i].price}, it can be yours!`);
+    }
 
-//localhost:3000/collectables?name='autographed picture of a dog'&price=10
+//localhost:3000/collectibles?name=shiny%20ball&price=5.95 
+//  //is throwing an error
+    //How do I get collectibeles into else? need to stringify? 
 });
 
 
 
 //4. Filter Shoes by Query Parameters
 //Task: Create a route /shoes that filters the list of shoes based on query parameters.
+
+//   const shoes = [
+//       { name: "Birkenstocks", price: 50, type: "sandal" },
+//       { name: "Air Jordans", price: 500, type: "sneaker" },
+//       { name: "Air Mahomeses", price: 501, type: "sneaker" },
+//       { name: "Utility Boots", price: 20, type: "boot" },
+//       { name: "Velcro Sandals", price: 15, type: "sandal" },
+//       { name: "Jet Boots", price: 1000, type: "boot" },
+//       { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+//   ];
+
+
+// app.get('/shoes', (req, res)=> {
+    
+//     let min-price =
+//     let max-price = 
+//     if 
+// })
+
+
+
+
 
 
 
