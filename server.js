@@ -41,7 +41,7 @@ app.get('/collectibles/:index', (req, res) => {
     res.send(`This item is not yet in stock. Check back soon!`); 
     } else {
         const name = req.query.name;
-        const pice = req.query.price;
+        const price = req.query.price;
         res.send(`So, you want ${collectibles[i].name}? For $${collectibles[i].price}, it can be yours!`);
     }
 
@@ -51,41 +51,58 @@ app.get('/collectibles/:index', (req, res) => {
         //YES, that's what parseInt does
 });
 
-
-
 //4. Filter Shoes by Query Parameters
 //Task: Create a route /shoes that filters the list of shoes based on query parameters.
 
-//   const shoes = [
-//       { name: "Birkenstocks", price: 50, type: "sandal" },
-//       { name: "Air Jordans", price: 500, type: "sneaker" },
-//       { name: "Air Mahomeses", price: 501, type: "sneaker" },
-//       { name: "Utility Boots", price: 20, type: "boot" },
-//       { name: "Velcro Sandals", price: 15, type: "sandal" },
-//       { name: "Jet Boots", price: 1000, type: "boot" },
-//       { name: "Fifty-Inch Heels", price: 175, type: "heel" }
-//   ];
 
-// // Query Parameters:
 
-// // min-price: Excludes shoes below this price.
-// // max-price: Excludes shoes above this price.
-// // type: Shows only shoes of the specified type.
-// // No parameters: Responds with the full list of shoes.
+// Query Parameters:
+
+// min-price: Excludes shoes below this price.
+// max-price: Excludes shoes above this price.
+// type: Shows only shoes of the specified type.
+// No parameters: Responds with the full list of shoes.
     
-// app.get('/shoes', (req, res)=> {
-//     const array = req.params.array
-//     const i = parseInt(array);
+app.get('/shoes', (req, res)=> {
+    const shoesArray = req.params.shoes
+    const i = parseInt(shoes);
 
-//     const filterMin = array.filter(())
-
-
-
-
-// });
+    const name = req.query.name;
+    const price = req.query.price;
+    const type = req.query.type;
 
 
 
+    const filterMin = shoes.filter(()=>{
+        return shoes < price 
+        res.send.shoes
+    })
+
+    const filterMax = shoes.filter(()=>{
+     return shoes > price 
+        res.send.shoes
+    })
+
+    const filterType = array
+
+
+ if (no paremeters) {
+    res.send.shoes  
+ }
+
+
+});
+
+
+  const shoes = [
+      { name: "Birkenstocks", price: 50, type: "sandal" },
+      { name: "Air Jordans", price: 500, type: "sneaker" },
+      { name: "Air Mahomeses", price: 501, type: "sneaker" },
+      { name: "Utility Boots", price: 20, type: "boot" },
+      { name: "Velcro Sandals", price: 15, type: "sandal" },
+      { name: "Jet Boots", price: 1000, type: "boot" },
+      { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+  ];
 
 
 
