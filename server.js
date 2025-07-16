@@ -12,18 +12,18 @@ app.get('/greetings/:username', (req, res) => {
 //2. Rolling the Dice
 // Task: Set up a route to handle URLs following the pattern /roll/<number-parameter>.
 
-// app.get('/roll/:number', (req,res) => {
-//     //res.send(`testing roll dice ${req.params.number}`);
-//     const number = req.params.number;
-//     if number = isNaN {
-//         res.send(`You must specify a number.`);
-//     } else {
-//       // 0< X < numberProvided
-//         const roll = Math.floor(Math.random() * (req.params.number));
-//         res.send(`You rolled a ${roll}.`)
-//     }
-//  });
- //not working.....why?
+app.get('/roll/:number', (req,res) => {
+    //res.send(`testing roll dice ${req.params.number}`);
+    const number = req.params.number;
+    if (isNaN(number)) {
+        res.send(`You must specify a number.`);
+    } else {
+      // 0< X < numberProvided
+        const roll = Math.floor(Math.random() * (req.params.number));
+        res.send(`You rolled a ${roll}.`)
+    }
+ });
+//not working.....why?
 
 //3. I Want THAT One!
 //Task: Create a route for URLs like /collectibles/<index-parameter>.
