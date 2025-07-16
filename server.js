@@ -12,17 +12,17 @@ app.get('/greetings/:username', (req, res) => {
 //2. Rolling the Dice
 // Task: Set up a route to handle URLs following the pattern /roll/<number-parameter>.
 
-// app.get('/roll/:number', (req,res) => {
-//     //res.send(`testing roll dice ${req.params.number}`);
-//     const number = req.params.number;
-//     if number = isNaN {
-//         res.send(`You must specify a number.`);
-//     } else {
-//       // 0< X < numberProvided
-//         const roll = Math.floor(Math.random() * (req.params.number));
-//         res.send(`You rolled a ${roll}.`)
-//     }
-//  });
+app.get('/roll/:number', (req,res) => {
+    //res.send(`testing roll dice ${req.params.number}`);
+    const number = req.params.number;
+    if number = isNaN {
+        res.send(`You must specify a number.`);
+    } else {
+      // 0< X < numberProvided
+        const roll = Math.floor(Math.random() * (req.params.number));
+        res.send(`You rolled a ${roll}.`)
+    }
+ });
  //not working.....why?
 
 //3. I Want THAT One!
@@ -48,6 +48,7 @@ app.get('/collectibles/:index', (req, res) => {
 //localhost:3000/collectibles?name=shiny%20ball&price=5.95 
 //  //is throwing an error
     //How do I get collectibeles into else? need to stringify? 
+        //YES, that's what parseInt does
 });
 
 
@@ -65,13 +66,23 @@ app.get('/collectibles/:index', (req, res) => {
 //       { name: "Fifty-Inch Heels", price: 175, type: "heel" }
 //   ];
 
+// // Query Parameters:
 
-// app.get('/shoes', (req, res)=> {
+// // min-price: Excludes shoes below this price.
+// // max-price: Excludes shoes above this price.
+// // type: Shows only shoes of the specified type.
+// // No parameters: Responds with the full list of shoes.
     
-//     let min-price =
-//     let max-price = 
-//     if 
-// })
+// app.get('/shoes', (req, res)=> {
+//     const array = req.params.array
+//     const i = parseInt(array);
+
+//     const filterMin = array.filter(())
+
+
+
+
+// });
 
 
 
