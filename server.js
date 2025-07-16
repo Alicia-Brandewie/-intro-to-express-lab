@@ -12,17 +12,17 @@ app.get('/greetings/:username', (req, res) => {
 //2. Rolling the Dice
 // Task: Set up a route to handle URLs following the pattern /roll/<number-parameter>.
 
-app.get('/roll/:number', (req,res) => {
-    //res.send(`testing roll dice ${req.params.number}`);
-    const number = req.params.number;
-    if number = isNaN {
-        res.send(`You must specify a number.`);
-    } else {
-      // 0< X < numberProvided
-        const roll = Math.floor(Math.random() * (req.params.number));
-        res.send(`You rolled a ${roll}.`)
-    }
- });
+// app.get('/roll/:number', (req,res) => {
+//     //res.send(`testing roll dice ${req.params.number}`);
+//     const number = req.params.number;
+//     if number = isNaN {
+//         res.send(`You must specify a number.`);
+//     } else {
+//       // 0< X < numberProvided
+//         const roll = Math.floor(Math.random() * (req.params.number));
+//         res.send(`You rolled a ${roll}.`)
+//     }
+//  });
  //not working.....why?
 
 //3. I Want THAT One!
@@ -54,46 +54,6 @@ app.get('/collectibles/:index', (req, res) => {
 //4. Filter Shoes by Query Parameters
 //Task: Create a route /shoes that filters the list of shoes based on query parameters.
 
-
-
-// Query Parameters:
-
-// min-price: Excludes shoes below this price.
-// max-price: Excludes shoes above this price.
-// type: Shows only shoes of the specified type.
-// No parameters: Responds with the full list of shoes.
-    
-app.get('/shoes', (req, res)=> {
-    const shoesArray = req.params.shoes
-    const i = parseInt(shoes);
-
-    const name = req.query.name;
-    const price = req.query.price;
-    const type = req.query.type;
-
-
-
-    const filterMin = shoes.filter(()=>{
-        return shoes < price 
-        res.send.shoes
-    })
-
-    const filterMax = shoes.filter(()=>{
-     return shoes > price 
-        res.send.shoes
-    })
-
-    const filterType = array
-
-
- if (no paremeters) {
-    res.send.shoes  
- }
-
-
-});
-
-
   const shoes = [
       { name: "Birkenstocks", price: 50, type: "sandal" },
       { name: "Air Jordans", price: 500, type: "sneaker" },
@@ -103,6 +63,63 @@ app.get('/shoes', (req, res)=> {
       { name: "Jet Boots", price: 1000, type: "boot" },
       { name: "Fifty-Inch Heels", price: 175, type: "heel" }
   ];
+
+    
+app.get('/shoes', (req, res)=> {
+    const shoesArray = req.params.shoes
+    const i = parseInt(shoes);
+
+    const minPrice = req.query.minPrice;
+    const maxPrice = req.query.maxPrice;
+    const type = req.query.type;
+
+//     const filteredShoes = shoes.filter((shoe)=>{
+//         if (shoe.price <= maxPrice){
+//             return shoe
+//         } else if (shoe.price >= minPrice) {
+//             return shoe
+//         } else if (shoe.type = type) { 
+//             return shoe
+//         }
+// });
+
+const filteredShoes = shoes.filter((shoe)=>{
+        if (shoe.price <= maxPrice && shoe.price >= minPrice && shoe.type === type) {
+            return shoe}
+        else {
+            return shoe
+        }
+});
+
+res.send(filteredShoes)
+});
+
+
+// if else {
+//  const filterMax = shoes.filter(()=>{
+//      return shoes > price 
+//         res.send.shoes
+//     })
+
+// }
+// else {
+//  const filterType = shoes.filter(() =>{
+
+//     })
+
+// }
+
+   
+
+   
+
+
+ 
+
+
+
+
+
 
 
 
