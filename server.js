@@ -1,32 +1,24 @@
 const express = require('express');
 const app = express()
 
-
 // 1. Be Polite, Greet the User 
-// Task: Create a route that responds to URLs like /greetings/<username-parameter>.
 app.get('/greetings/:username', (req, res) => {
     res.send(`Hello there, ${req.params.username}!`);
 });
 
-
 //2. Rolling the Dice
-// Task: Set up a route to handle URLs following the pattern /roll/<number-parameter>.
 
 app.get('/roll/:number', (req,res) => {
-    //res.send(`testing roll dice ${req.params.number}`);
     const number = req.params.number;
     if (isNaN(number)) {
         res.send(`You must specify a number.`);
     } else {
-      // 0< X < numberProvided
         const roll = Math.floor(Math.random() * (req.params.number));
         res.send(`You rolled a ${roll}.`)
     }
  });
-//not working.....why?
 
 //3. I Want THAT One!
-//Task: Create a route for URLs like /collectibles/<index-parameter>.
 
    const collectibles = [
     { name: 'shiny ball', price: 5.95 },
@@ -44,15 +36,9 @@ app.get('/collectibles/:index', (req, res) => {
         const price = req.query.price;
         res.send(`So, you want ${collectibles[i].name}? For $${collectibles[i].price}, it can be yours!`);
     }
-
-//localhost:3000/collectibles?name=shiny%20ball&price=5.95 
-//  //is throwing an error
-    //How do I get collectibeles into else? need to stringify? 
-        //YES, that's what parseInt does
 });
 
 //4. Filter Shoes by Query Parameters
-//Task: Create a route /shoes that filters the list of shoes based on query parameters.
 
   const shoes = [
       { name: "Birkenstocks", price: 50, type: "sandal" },
@@ -64,7 +50,6 @@ app.get('/collectibles/:index', (req, res) => {
       { name: "Fifty-Inch Heels", price: 175, type: "heel" }
   ];
 
-    
 app.get('/shoes', (req, res)=> {
     const shoesArray = req.params.shoes
     const i = parseInt(shoes);
@@ -73,56 +58,17 @@ app.get('/shoes', (req, res)=> {
     const maxPrice = req.query.maxPrice;
     const type = req.query.type;
 
-//     const filteredShoes = shoes.filter((shoe)=>{
-//         if (shoe.price <= maxPrice){
-//             return shoe
-//         } else if (shoe.price >= minPrice) {
-//             return shoe
-//         } else if (shoe.type = type) { 
-//             return shoe
-//         }
-// });
-
-const filteredShoes = shoes.filter((shoe)=>{
-        if (shoe.price <= maxPrice && shoe.price >= minPrice && shoe.type === type) {
-            return shoe}
-        else {
-            return shoe
-        }
+    if (minPrice || maxPrice || type) {
+        const filteredShoes = shoes.filter((shoe)=>{
+            if (shoe.price <= maxPrice && shoe.price >= minPrice && shoe.type === type) {
+                return shoe
+            }
+            res.send(filteredShoes)\
 });
-
-res.send(filteredShoes)
+} else{
+    res.send(shoes) 
+}
 });
-
-
-// if else {
-//  const filterMax = shoes.filter(()=>{
-//      return shoes > price 
-//         res.send.shoes
-//     })
-
-// }
-// else {
-//  const filterType = shoes.filter(() =>{
-
-//     })
-
-// }
-
-   
-
-   
-
-
- 
-
-
-
-
-
-
-
-
 
 app.listen(3000, () => {
     console.log('Listening on port 3000')
