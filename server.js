@@ -32,8 +32,6 @@ app.get('/collectibles/:index', (req, res) => {
     if (!collectibles[i]) { // "if there is nothing there, return something at this index"
         res.send(`This item is not yet in stock. Check back soon!`);
     } else {
-        const name = req.query.name;
-        const price = req.query.price;
         res.send(`So, you want ${collectibles[i].name}? For $${collectibles[i].price}, it can be yours!`);
     }
 });
@@ -51,8 +49,6 @@ const shoes = [
 ];
 
 app.get('/shoes', (req, res) => {
-    const shoesArray = req.params.shoes
-    const i = parseInt(shoes);
 
     const minPrice = req.query.minPrice;
     const maxPrice = req.query.maxPrice;
@@ -63,8 +59,8 @@ app.get('/shoes', (req, res) => {
             if (shoe.price <= maxPrice && shoe.price >= minPrice && shoe.type === type) {
                 return shoe
             }
-            res.send(filteredShoes)
         });
+            res.send(filteredShoes)
     } else {
         res.send(shoes)
     }
